@@ -1,6 +1,9 @@
 #include <iostream>
 #include <wchar.h>
 
+#define BLACK 1;
+#define WHITE 2;
+
 using namespace std;
 
 class Board{
@@ -14,8 +17,9 @@ public:
 	void draw_Board();
 };
 
-void Board::setBoard(int x, int y, int color){
-	m_board[y][x] = color;
+void Board::put_Stone(int x, int y, int color){
+	if(color == BLACK) m_board[y][x] = '●';
+	else if(color == WHITE) m_board[y][x] = '○';
 }
 
 void Board::draw_Board(){
@@ -24,8 +28,9 @@ void Board::draw_Board(){
 
 class Player{
 private:
-	
+	int m_Stone_color;
 public:
+	Player(int Stone_color);
 	void put_Stone(int x, int y);
 }
 
@@ -33,8 +38,6 @@ void Player::put_Stone(int x, int y, int color){
 	setBoard(x, y, color);
 }
 
-int main()
-{
-
+int main(){
 	return 0;
 }
